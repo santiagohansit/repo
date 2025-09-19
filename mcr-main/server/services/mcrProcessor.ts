@@ -1,17 +1,7 @@
   import fs from "fs/promises";
   import path from "path";
-  import type { McrFile, HumanizationSettings } from "@shared/schema";
+  import type { McrFile, HumanizationSettings, McrCommand } from "@shared/schema";
   import type { IStorage } from "../storage";
-
-  interface McrCommand {
-    type: 'keyboard' | 'mouse' | 'delay' | 'text';
-    action: string;
-    key?: string;
-    delay?: number;
-    x?: number;
-    y?: number;
-    text?: string;
-  }
 
   export const isCommandEqual = (cmd1: McrCommand, cmd2: McrCommand) =>
       cmd1.key === cmd2.key && cmd1.action === cmd2.action;

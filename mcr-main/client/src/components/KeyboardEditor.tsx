@@ -11,17 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Loader2 } from 'lucide-react';
-import type { McrFile } from '@shared/schema';
-
-interface McrCommand {
-  type: 'keyboard' | 'mouse' | 'delay' | 'text';
-  action: string;
-  key?: string;
-  delay?: number;
-  x?: number;
-  y?: number;
-  text?: string;
-}
+import type { McrFile, McrCommand } from '@shared/schema';
 
 const keyboardLayout = [
   ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],

@@ -65,3 +65,14 @@ export type McrFile = typeof mcrFiles.$inferSelect;
 export type InsertMcrFile = z.infer<typeof insertMcrFileSchema>;
 export type ProcessingQueue = typeof processingQueue.$inferSelect;
 export type HumanizationSettings = z.infer<typeof humanizationSettingsSchema>;
+
+// MCR Command interface for shared use between frontend and backend
+export interface McrCommand {
+  type: 'keyboard' | 'mouse' | 'delay' | 'text';
+  action: string;
+  key?: string;
+  delay?: number;
+  x?: number;
+  y?: number;
+  text?: string;
+}

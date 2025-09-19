@@ -199,6 +199,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get parsed MCR commands for keyboard editor
+  app.get("/api/files/:id/parsed-content", async (req, res) => {
+    try {
+      const file = await storage.getMcrFile(req.params.id);
+      if (!file) {
+        return res.status(404).json({ message: "File not found" });
+      }
+
+      const filePath = path.join(process.cwd(), 'uploads', file.filename);
+      const content = await fs.readFile(filePath, 'utf-8');
+      const commands = parseMcrContent(content);
+      
+      res.json(commands);
+    } catch (error) {
+      res.status(500).json({ 
+        message: error instanceof Error ? error.message : "Failed to parse file content" 
+      });
+    }
+  });
+
   // Get processed file content
   app.get("/api/files/:id/content", async (req, res) => {
     try {
