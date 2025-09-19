@@ -1,0 +1,70 @@
+Resumen de Funciones e Instrucciones del Proyecto MCR
+
+Introducción:
+Este documento proporciona una guía completa sobre cómo ejecutar y utilizar el Proyecto MCR, una aplicación diseñada para la gestión, manipulación y optimización de archivos MCR.
+
+Cómo Ejecutar el Proyecto:
+
+1.  Instalación de Dependencias:
+    Abre tu terminal en el directorio `C:\Users\Maq4\Desktop\repo-master\repo-master\mcr-main` y ejecuta:
+    ```bash
+    npm install
+    ```
+
+2.  Inicio del Servidor de Desarrollo:
+    Una vez instaladas las dependencias, en la misma terminal, ejecuta:
+    ```bash
+    npm run dev
+    ```
+    Esto iniciará el servidor de desarrollo y la aplicación cliente. Podrás acceder a la aplicación en tu navegador (normalmente en `http://localhost:5173/`).
+
+Funciones Principales (server/services/mcrProcessor.ts):
+
+*   `processMcrFile(file, storage, broadcastUpdate)`: Procesa un archivo MCR, aplicando humanización y guardando el resultado.
+*   `parseMcrContent(content)`: Parsea el contenido de texto de un archivo MCR en una estructura de comandos.
+*   `calculateMcrDuration(commands)`: Calcula la duración total de un conjunto de comandos MCR.
+*   `lengthenMcr(commands, targetDuration)`: Alarga un MCR a una duración objetivo, repitiendo su contenido.
+*   `removeMouseCommands(commands)`: Elimina todos los comandos de ratón de un MCR.
+*   `removeZeroDelays(commands)`: Elimina los comandos de retardo de 0 milisegundos de un MCR.
+*   `findCommonSequences(commands1, commands2)`: Encuentra secuencias de comandos comunes entre dos MCRs.
+*   `mergeAndOptimizeMcrFiles(commandsA, commandsB, humanizationSettings)`: Fusiona y optimiza dos MCRs basándose en patrones comunes.
+*   `generateMcrContent(commands)`: Genera el contenido de texto de un archivo MCR a partir de una estructura de comandos.
+*   `humanizeCommands(commands, settings, onProgress)`: Aplica variaciones "humanas" a los comandos, incluyendo la exclusión de teclas.
+*   `isCommandEqual(cmd1, cmd2)`: Compara dos comandos MCR para determinar si son iguales.
+
+Endpoints de la API (server/routes.ts):
+
+*   `GET /api/files`: Obtiene todos los archivos MCR cargados.
+*   `POST /api/files/upload`: Sube un archivo MCR.
+*   `POST /api/files/:id/process`: Inicia el procesamiento de un archivo MCR.
+*   `GET /api/files/:id/download`: Descarga un archivo MCR procesado.
+*   `GET /api/files/:id/parsed-content`: Obtiene el contenido parseado de un archivo MCR para el editor de teclado.
+*   `GET /api/files/:id/content`: Obtiene el contenido de un archivo procesado.
+*   `GET /api/files/:id/duration`: Obtiene la duración de un archivo MCR.
+*   `POST /api/files/:id/lengthen`: Alarga un archivo MCR a una duración específica.
+*   `POST /api/files/:id/cleanup`: Limpia un archivo MCR (elimina comandos de ratón/retardos de 0ms).
+*   `POST /api/files/:id/excluded-keys`: Actualiza las teclas excluidas para un archivo MCR.
+*   `POST /api/files/merge-optimized`: Fusiona y optimiza dos archivos MCR.
+*   `POST /api/files/from-pattern`: Crea un nuevo archivo MCR a partir de un patrón.
+*   `DELETE /api/files/:id`: Elimina un archivo MCR.
+*   `GET /api/queue`: Obtiene la cola de procesamiento.
+*   `GET /api/stats`: Obtiene estadísticas de procesamiento.
+*   `POST /api/images/upload`: Sube una imagen (nueva funcionalidad).
+*   `GET /api/images`: Obtiene todas las imágenes cargadas (nueva funcionalidad).
+
+Uso de Características Clave:
+
+*   **Editor de Teclado Visual:**
+    *   Acceso: Navega a la pestaña "File Management". Para cualquier archivo, haz clic en el icono del teclado (Keyboard).
+    *   Funcionalidad: Permite seleccionar visualmente las teclas que deseas excluir del procesamiento de un archivo MCR. Haz clic en las teclas del teclado virtual para alternar su estado de exclusión.
+    *   Guardar: Una vez seleccionadas las teclas, haz clic en el botón "Save" dentro del diálogo del teclado virtual para guardar la configuración de exclusión para ese archivo.
+
+*   **Carga de Imágenes:**
+    *   Acceso: (Esta funcionalidad aún no tiene una interfaz de usuario dedicada en el cliente, pero el endpoint de la API está disponible).
+    *   Propósito: Permite subir imágenes que, en futuras fases, se podrán asociar con MCRs para la optimización visual.
+
+Consideraciones Importantes:
+
+*   **Límites de Alargamiento de MCR:** Aunque no hay un límite de tiempo codificado, alargar MCRs a duraciones muy extensas (ej. 30 horas) puede causar problemas de memoria o tiempo de procesamiento en el servidor, especialmente con archivos MCR complejos. Se recomienda mantener las duraciones alargadas en un rango práctico (ej. hasta unas pocas horas).
+*   **Problema Conocido (WebSocket):** La actualización en tiempo real de la lista de archivos después de ciertas operaciones (como "Optimize & Merge") no funciona debido a un problema persistente con la conexión WebSocket (`ws://localhost:undefined`). Requiere una recarga manual de la página para ver los cambios.
+
