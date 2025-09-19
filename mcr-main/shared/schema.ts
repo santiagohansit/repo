@@ -56,6 +56,7 @@ export const humanizationSettingsSchema = z.object({
   hesitationPauses: z.number().min(0).max(50).default(15),
   preserveStructure: z.boolean().default(true),
   excludedKeys: z.array(z.string()).optional(),
+  removeMouseOnUpload: z.boolean().default(false),
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

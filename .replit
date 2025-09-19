@@ -6,3 +6,31 @@ channel = "stable-25_05"
 [agent]
 expertMode = true
 integrations = ["javascript_database:1.0.0"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "MCR File Processor"
+
+[[workflows.workflow]]
+name = "MCR File Processor"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd mcr-main && npm run dev"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
