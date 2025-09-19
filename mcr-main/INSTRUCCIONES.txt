@@ -1,0 +1,35 @@
+INSTRUCCIONES PARA INSTALAR Y ABRIR LA APLICACIÓN rest-express
+
+Este documento le guiará sobre cómo instalar y luego abrir la aplicación "rest-express".
+
+---
+
+PARTE 1: INSTALACIÓN DE LA APLICACIÓN
+
+1.  Localice el Instalador:
+    El archivo de instalación se encuentra en la carpeta 'dist' de su proyecto.
+    Nombre del archivo: rest-express Setup 1.0.0.exe
+    Ruta completa: C:\Users\Maq4\Desktop\mcr-main\mcr-main\dist\rest-express Setup 1.0.0.exe
+
+2.  Ejecute el Instalador:
+    Haga doble clic en el archivo 'rest-express Setup 1.0.0.exe' para iniciar la instalación.
+
+3.  Siga las Instrucciones en Pantalla:
+    Acepte los permisos si se le solicitan (Control de cuentas de usuario) y siga las indicaciones del instalador. Generalmente, puede hacer clic en "Siguiente" o "Instalar" hasta finalizar.
+
+4.  Finalice la Instalación:
+    Una vez completada, haga clic en "Finalizar" o "Cerrar".
+
+---
+
+PARTE 2: ABRIR LA APLICACIÓN DESPUÉS DE LA INSTALACIÓN
+
+1.  Desde el Menú de Inicio:
+    Busque "rest-express" en su menú de inicio de Windows y haga clic en el icono de la aplicación.
+
+2.  Desde el Escritorio (si se creó un acceso directo):
+    Si el instalador creó un acceso directo en su escritorio, haga doble clic en él para abrir la aplicación.
+
+---
+
+¡Disfrute usando la aplicación rest-express!
