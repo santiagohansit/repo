@@ -1,0 +1,40 @@
+Resumen del Proyecto MCR
+Fecha: 18 de septiembre de 2025
+Agente: Gemini CLI
+Objetivo General: Mejorar la gestión, manipulación y optimización de archivos MCR.
+
+---
+
+Fase 1: Herramientas de Análisis y Limpieza (Completada)
+
+*   **Cálculo y Visualización de Duración:** Se añadió la capacidad de ver la duración total de cada archivo MCR en la interfaz.
+*   **Extensión a Duración Específica:** Se implementó la función para alargar un MCR a un tiempo objetivo, repitiendo y humanizando su contenido.
+*   **Limpieza de Comandos:** Se añadió una herramienta para eliminar comandos de mouse y/o delays de 0 milisegundos de los archivos MCR existentes.
+*   **Eliminación de Mouse al Subir:** Se agregó una opción para eliminar automáticamente los comandos de mouse de un archivo MCR al momento de subirlo.
+
+---
+
+Fase 2: Comparación y Optimización Inteligente (Completada - con limitación en tiempo real)
+
+*   **Objetivo:** Generar un único archivo MCR optimizado a partir de dos archivos comparados, sin mostrar fragmentos intermedios.
+*   **Detección de Patrones:** El sistema identifica secuencias de teclas comunes entre dos archivos MCR.
+*   **Regla de Optimización:** Para los patrones comunes, se crea una nueva versión con delays aleatorios (humanizada), en lugar de elegir la más rápida o una existente.
+*   **Fusión Automática:** Al seleccionar dos archivos y usar "Optimize & Merge", el sistema toma uno como base, reemplaza los patrones comunes con sus versiones optimizadas y genera un nuevo archivo MCR fusionado y optimizado.
+*   **Limitación Conocida:** La actualización de la lista de archivos en tiempo real después de la operación "Optimize & Merge" no funciona debido a un problema persistente con la conexión WebSocket (`ws://localhost:undefined`). El archivo se crea correctamente y aparece en la lista tras una recarga manual de la página.
+
+---
+
+Fase 3: Editor de Teclado Visual (En Progreso)
+
+*   **Objetivo:** Crear una interfaz gráfica de usuario que represente un teclado, permitiendo al usuario agregar, quitar o modificar comandos (números, letras, etc.) de un MCR de forma visual e interactiva.
+*   **Estado:** Iniciada.
+*   **Progreso:** Se ha implementado el diseño básico del teclado y la selección de archivos MCR para visualización. Se ha añadido la funcionalidad de marcar teclas para ignorar.
+*   **Problema Actual:** La humanización de archivos está fallando con el error `isCommandEqual is not defined`. Se está trabajando en la resolución de este problema.
+
+---
+
+Fase 4: Optimización Basada en Imágenes (Visión a Largo Plazo)
+
+*   **Objetivo:** Utilizar imágenes (capturas de pantalla) como referencia para optimizar rutas de mouse y otras acciones en los MCR.
+*   **Concepto:** Implicaría visión por computadora para identificar elementos en la imagen y relacionarlos con los comandos MCR.
+*   **Estado:** Visión a largo plazo, pendiente de definición detallada y desarrollo.
