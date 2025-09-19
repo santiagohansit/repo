@@ -11,10 +11,6 @@ integrations = ["javascript_database:1.0.0"]
 localPort = 5000
 externalPort = 80
 
-[[ports]]
-localPort = 44035
-externalPort = 3000
-
 [workflows]
 runButton = "Project"
 
